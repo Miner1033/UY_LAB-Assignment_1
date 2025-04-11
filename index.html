@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UY LAB - IT Training Institute</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #fd0db1;
+            --secondary-color: #df4eac;
+            --accent-color: rgb(229, 218, 0);
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('cover.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--accent-color);
+            padding: 150px 0;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            min-height: 60vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
+        
+        .hero-content {
+            text-align: right;
+            max-width: 600px;
+            padding-right: 2rem;
+        }
+        
+        /* Features Section */
+        #features {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .gallery-title {
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .gallery-subtitle {
+            margin-bottom: 40px;
+            color: #666;
+        }
+        
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        .gallery-img {
+            height: 300px;
+            width: 300px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        /* Contact Section */
+        #contact {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-header h2 {
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .contact-header p {
+            color: #666;
+        }
+        
+        .form-control {
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(253, 13, 177, 0.25);
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .btn-submit {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .btn-submit:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(253, 13, 177, 0.3);
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px;
+            padding: 40px;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .info-icon {
+            background-color: white;
+            color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .info-content h5 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .info-content p {
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        
+        .social-links-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-links-contact a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links-contact a:hover {
+            background-color: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+        }
+        
+        .footer-links ul {
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0.8;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-outline-light {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .btn-outline-light:hover {
+            background-color: rgba(198, 251, 5, 0.893);
+            color: #000;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 767.98px) {
+            .hero-content {
+                text-align: center;
+                padding-right: 0;
+                max-width: 100%;
+            }
+            
+            .hero-section {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .contact-card,
+            .contact-info-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">UY LAB - Best IT Training in Bangladesh</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <a href="#contact" class="btn btn-primary ms-lg-3">Enroll Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="display-4 fw-bold mb-4">Transform Your Career with UY LAB</h1>
+            <p class="lead mb-5">Learn in-demand tech skills from industry experts and boost your career in Bangladesh's growing IT sector</p>
+            <div>
+                <a href="#features" class="btn btn-primary btn-lg px-4 me-2">View Courses</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg px-4">Get Info</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Our Popular Courses</h2>
+                <p class="lead">Master the skills that employers are looking for</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fab fa-php"></i>
+                        </div>
+                        <h3>PHP Development</h3>
+                        <p>Master server-side scripting with PHP to build dynamic websites and applications.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>PHP Fundamentals</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Object-Oriented PHP</li>
+                            <li><i class="fas fa-check text-success me-2"></i>MySQL Database Integration</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Building CMS Systems</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <h3>JavaScript Mastery</h3>
+                        <p>Learn modern JavaScript to create interactive and responsive web applications.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>ES6+ Features</li>
+                            <li><i class="fas fa-check text-success me-2"></i>DOM Manipulation</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Async Programming</li>
+                            <li><i class="fas fa-check text-success me-2"></i>API Integration</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fab fa-laravel"></i>
+                        </div>
+                        <h3>Laravel Framework</h3>
+                        <p>Build professional web applications with Laravel's elegant syntax and powerful tools.</p>
+                        <ul class="list-unstyled text-start">
+                            <li><i class="fas fa-check text-success me-2"></i>MVC Architecture</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Eloquent ORM</li>
+                            <li><i class="fas fa-check text-success me-2"></i>API Development</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Authentication Systems</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section bg-light">
+        <div class="container">
+            <h2 class="gallery-title">Our Training Gallery</h2>
+            <p class="gallery-subtitle">See our students in action and our training facilities</p>
+            
+            <div class="gallery-container">
+                <img src="students.png" alt="Students in classroom" class="gallery-img">
+                <img src="students.png" alt="Computer lab" class="gallery-img">
+                <img src="students.png" alt="Workshop session" class="gallery-img">
+                <img src="students.png" alt="Group discussion" class="gallery-img">
+                <img src="students.png" alt="Training event" class="gallery-img">
+                <img src="students.png" alt="Certificate distribution" class="gallery-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="contact-header">
+                        <h2>Get In Touch</h2>
+                        <p class="lead">Ready to start your IT career? Contact us today!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="contact-card">
+                        <h3 class="mb-4">Send us a message</h3>
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="course" class="form-label">Course Interest</label>
+                                <select class="form-control" id="course">
+                                    <option selected disabled>Select a course</option>
+                                    <option>PHP Development</option>
+                                    <option>JavaScript Mastery</option>
+                                    <option>Laravel Framework</option>
+                                    <option>Web Design</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Your Message</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Tell us about your goals and questions..." required></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-submit">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="contact-info-card">
+                        <h3 class="mb-4">Contact Information</h3>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h5>Our Location</h5>
+                                <p>123 IT Training Road, Dhanmondi, Dhaka 1205, Bangladesh</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h5>Email Us</h5>
+                                <p>contact@uylab.org<br>admission@uylab.org</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h5>Call Us</h5>
+                                <p>+8801958420252<br>+8809612345678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h5>Opening Hours</h5>
+                                <p>Sunday - Thursday: 9AM - 6PM<br>Friday: 9AM - 1PM<br>Saturday: Closed</p>
+                            </div>
+                        </div>
+                        
+                        <h5 class="mt-4">Follow Us</h5>
+                        <div class="social-links-contact">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-about">
+                        <h4 class="mb-3">UY LAB</h4>
+                        <p>UY LAB is one of Bangladesh's premier IT training institutes, dedicated to creating skilled professionals for the digital economy. Our industry-relevant courses are designed by experts to bridge the gap between education and employment.</p>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5 class="mb-3">Quick Links</h5>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#features">Courses</a></li>
+                            <li><a href="#gallery">Gallery</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#">Admission</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5 class="mb-3">Courses</h5>
+                        <ul>
+                            <li><a href="#">PHP Development</a></li>
+                            <li><a href="#">JavaScript Mastery</a></li>
+                            <li><a href="#">Laravel Framework</a></li>
+                            <li><a href="#">Web Design</a></li>
+                            <li><a href="#">React JS</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-contact">
+                        <h5 class="mb-3">Connect With Us</h5>
+                        <p><i class="fas fa-envelope me-2"></i> contact@uylab.org</p>
+                        <p><i class="fas fa-phone me-2"></i> +8801958420252</p>
+                        <div class="social-links mt-3">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p class="mb-0">&copy; 2023 UY LAB. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
